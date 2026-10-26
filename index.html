@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Diario de Estudio</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app">
+    <header class="app__header">
+      <h1 class="app__title">Diario de Estudio</h1>
+      <p class="app__subtitle">Registra tus sesiones y mantén viva la racha.</p>
+    </header>
+
+    <div class="stats">
+      <section class="cell" aria-label="Racha actual">
+        <div class="cell__head">
+          <span class="cell__label">Racha actual</span>
+        </div>
+        <p class="cell__value">
+          <span class="cell__number cell__number--mark" id="streakNumber">0</span>
+          <span class="cell__unit">días seguidos</span>
+        </p>
+      </section>
+
+      <section class="cell" aria-label="Mejor racha">
+        <div class="cell__head">
+          <span class="cell__label">Mejor racha</span>
+        </div>
+        <p class="cell__value">
+          <span class="cell__number" id="bestStreakNumber">0</span>
+          <span class="cell__unit">días</span>
+        </p>
+      </section>
+
+      <section class="cell" aria-label="Total de minutos de esta semana">
+        <div class="cell__head">
+          <span class="cell__label">Esta semana</span>
+          <span class="cell__meta" id="weekRange">—</span>
+        </div>
+        <p class="cell__value">
+          <span class="cell__number cell__number--sm" id="weekMinutes">0</span>
+          <span class="cell__unit">min</span>
+          <span class="cell__note" id="weekHours" hidden></span>
+        </p>
+      </section>
+
+      <section class="cell" aria-label="Días estudiados este mes">
+        <div class="cell__head">
+          <span class="cell__label">Este mes</span>
+          <span class="cell__meta" id="monthRange">—</span>
+        </div>
+        <p class="cell__value">
+          <span class="cell__number cell__number--sm" id="monthDays">0</span>
+          <span class="cell__unit">días estudiados</span>
+        </p>
+      </section>
+    </div>
+
+    <section class="card heat" aria-labelledby="heatTitle">
+      <h2 class="card__title" id="heatTitle">Últimas 12 semanas</h2>
+
+      <ul class="heat__legend">
+        <li class="heat__legend-item"><span class="heat__sample heat__cell--level-0" aria-hidden="true"></span>Sin sesión</li>
+        <li class="heat__legend-item"><span class="heat__sample heat__cell--level-1" aria-hidden="true"></span>1 – 30 min</li>
+        <li class="heat__legend-item"><span class="heat__sample heat__cell--level-2" aria-hidden="true"></span>31 – 60 min</li>
+        <li class="heat__legend-item"><span class="heat__sample heat__cell--level-3" aria-hidden="true"></span>61 – 120 min</li>
+        <li class="heat__legend-item"><span class="heat__sample heat__cell--level-4" aria-hidden="true"></span>121 o más min</li>
+        <li class="heat__legend-item"><span class="heat__sample heat__cell--future" aria-hidden="true"></span>Aún no ha llegado</li>
+      </ul>
+
+      <div class="heat__grid" id="heatmap" role="group" aria-label="Mapa de calor de las últimas 12 semanas"></div>
+
+      <p class="heat__detail" id="heatmapDetail">Pulsa un día para ver sus minutos.</p>
+    </section>
+
+    <section class="card">
+      <h2 class="card__title">Registrar sesión</h2>
+      <form id="sessionForm" class="form" novalidate>
+        <div class="field">
+          <label class="field__label" for="date">Fecha</label>
+          <input class="field__input" type="date" id="date" name="date" required>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="topic">Tema</label>
+          <input class="field__input" type="text" id="topic" name="topic"
+                 placeholder="Ej. Arrays y bucles" autocomplete="off" required>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="minutes">Minutos</label>
+          <input class="field__input" type="number" id="minutes" name="minutes"
+                 min="1" step="1" placeholder="Ej. 45" required>
+        </div>
+
+        <p class="form__error" id="formError" role="alert" hidden></p>
+
+        <button class="button" type="submit">Añadir sesión</button>
+      </form>
+    </section>
+
+    <section class="card">
+      <h2 class="card__title">Sesiones</h2>
+      <ul class="sessions" id="sessionList"></ul>
+      <p class="sessions__empty" id="emptyState">Todavía no has registrado ninguna sesión. Apunta la primera con el formulario de arriba.</p>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

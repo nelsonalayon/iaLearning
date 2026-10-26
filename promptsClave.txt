@@ -1,0 +1,45 @@
+NO escribas código en ningún momento. Vamos a redactar la especificación de
+una nueva funcionalidad del Diario de Estudio. Lee docs/constitution.md.
+
+Idea inicial: un mapa de calor tipo GitHub que muestre los días
+estudiados de
+las últimas semanas, donde cuantos más minutos estudiados, más intenso
+es el
+color del día.
+
+Tu trabajo:
+
+1. Hazme preguntas de UNA en UNA para eliminar ambigüedades (casos límite,
+   comportamiento con errores, qué queda fuera de esta versión). Máximo
+   5 preguntas.
+
+2. Con mis respuestas, genera specs/001-heat-map/spec.md con esta
+   estructura: contexto y objetivo, usuarios, historias de usuario,
+   requisitos funcionales numerados (RF-x) con criterios de aceptación en notación
+   EARS
+   en español, requisitos no funcionales, casos límite, fuera de
+   alcance,
+   criterios de finalización y dudas abiertas marcadas como
+   [NECESITA ACLARACIÓN].
+
+3. El QUÉ y el POR QUÉ. Nada de stack, arquitectura ni nombres de
+   archivos:
+   eso irá en el plan.
+
+
+revisar spec
+
+Revisa specs/001-heat-map/spec.md como si fueras un QA muy profesional. Lista: (1) ambigüedades restantes, (2) contradicciones entre requisitos, (3) casos límite no cubiertos, (4) conflictos con docs/constitution.md. No propongas soluciones todavía: solo detecta. Formato: lista numerada. 
+
+Planear la nueva feature:
+
+Lee docs/constitution.md y specs/001-heat-map/spec.md. NO escribas código. Genera specs/001-heat-map/plan.md con: qué archivos se crean o modifican y qué responsabilidad tiene cada uno, qué funciones puras de lógica se necesitan (con "hoy" como parámetro), algoritmo del mapa en pseudocódigo, cómo se pinta en la interfaz, decisiones técnicas justificadas (y su alternativa descartada) y estrategia de tests con node --test. Todo debe respetar la constitución y cubrir todos los RF. Marca qué RF cubre cada parte.
+
+Implementacion
+
+Implementa SOLO la tarea T1 de specs/001-heat-map/tasks.md, siguiendo plan.md y la constitución. Escribe primero los tests, luego el código. Ejecuta node --test y muéstrame el resultado. Al terminar: marca T1 en tasks.md, indica qué RF cubre y PÁRATE. No empieces T2.
+
+
+verificacion
+
+Recorre specs/001-heat-map/spec.md requisito por requisito. Para cada uno indica qué test lo cubre y el resultado de ejecutarlo. Los RF de interfaz que no se puedan testear con node --test, verifícalos con Chrome DevTools (incluida la vista móvil). Si algún RF no está cubierto o falla, dilo claramente. Después comprueba los criterios de finalización y dame un veredicto: ¿la spec está cumplida?
